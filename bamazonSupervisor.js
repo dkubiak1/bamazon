@@ -56,9 +56,6 @@ var connection = mysql.createConnection({
             if (err) throw err;
             var myArray = [];
            
-            var strung = JSON.stringify(res);
-          
-           console.log(res)
             var table = new Table({
                 head: ['id', 'Name', 'Overhead', 'Sales', 'Total_profit'],
                 chars: {
@@ -112,6 +109,7 @@ function department() {
             message: "Enter Over-Head Costs for New Dept."
         }
     ]).then(function(data) {
+        console.log("New Department has been Added!!")
         connection.query(
             "INSERT INTO departments SET ?",
             {
@@ -121,9 +119,10 @@ function department() {
             },
             function(err, res) {
                 
-                if (!err) {console.log("New Department has been Added!!")}
+               // if (!err) {console.log("New Department has been Added!!")}
               }
         )
-
-    })    
+        login(); 
+    })
+       
 }
